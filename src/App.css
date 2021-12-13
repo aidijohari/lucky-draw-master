@@ -25,6 +25,11 @@ body * {
   font-weight: 500;
 }
 
+.startBtn.css-1e6y48t-MuiButtonBase-root-MuiButton-root.Mui-disabled{
+  color: #eee;
+  opacity: 0.4
+}
+
 .logo-wrapper {
   position: absolute;
   width: 105px;
