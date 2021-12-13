@@ -46,6 +46,7 @@ function Main({
   const myRef = useRef();
 
   const [checkBoxFlag, setCheckBoxFlag] = React.useState(false);
+  const [confettiFlag, setConfettiFlag] = React.useState(false);
 
   const [counter, setCounter] = React.useState(1);
 
@@ -64,10 +65,8 @@ function Main({
       audio.loop = true;
       winnerTheme.load();
       winnerTheme.pause();
-      // changeAudioStatus(true);
 
       interval = setInterval(() => {
-        // console.log(Index);
         Index++;
         if (Index == len) {
           Index = 0;
@@ -75,19 +74,16 @@ function Main({
         setIndex(Index);
         Set_Interval(interval);
       }, 50);
-      // return () => clearInterval(interval);
       setbuttontext("Stop");
     } else {
       setIsExploding(true);
       audio.pause();
       winnerTheme.play();
 
-      // document.getElementById("congrat").click();
       setbuttontext("Start");
       setWinner(winnerList[Index]);
 
       clearInterval(Interval);
-      // return () => clearInterval(interval);
     }
   };
 
@@ -97,15 +93,17 @@ function Main({
     } else {
       setCounter(counter + 1);
     }
-    console.log("counter" + counter);
   };
 
   useEffect(() => {
-    const timer = setTimeout(() => {
-      console.log("This will run after 1 second!");
+    if (confettiFlag == true) {
       setIsExploding(false);
-    }, 2000);
-    return () => clearTimeout(timer);
+    } else {
+      const timer = setTimeout(() => {
+        setIsExploding(false);
+      }, 2000);
+      return () => clearTimeout(timer);
+    }
   }, [isExploding]);
 
   useEffect(() => {
@@ -125,7 +123,7 @@ function Main({
                   style={{
                     transform: "rotateX(70deg)",
                     fontSize: "1.6vw",
-                    lineHeight: "1.6vw",
+                    lineHeight: "2.6vw",
                   }}
                 >
                   {winnerList[Index - 4 >= 0 ? Index - 4 : Index - 4 + len]}
@@ -166,11 +164,11 @@ function Main({
               </div>
               <hr />
               <div
-                className="winner1"
+                className="winner"
                 style={{
                   width: "100%",
                   padding: "0.15vw",
-                  margin: "1vw 0px",
+                  margin: "1rem 0px",
                   height: "80px",
                 }}
               >
@@ -243,11 +241,11 @@ function Main({
               </div>
               <hr />
               <div
-                className="winner2"
+                className="winner"
                 style={{
                   width: "100%",
                   padding: "0.15vw",
-                  margin: "1vw 0px",
+                  margin: "1rem 0px",
                   height: "80px",
                 }}
               >
@@ -298,11 +296,11 @@ function Main({
               </div>
               <hr />
               <div
-                className="winner3"
+                className="winner"
                 style={{
                   width: "100%",
                   padding: "0.15vw",
-                  margin: "1vw 0px",
+                  margin: "1rem 0px",
                   height: "80px",
                 }}
               >
@@ -375,11 +373,11 @@ function Main({
               </div>
               <hr />
               <div
-                className="winner4"
+                className="winner"
                 style={{
                   width: "100%",
                   padding: "0.15vw",
-                  margin: "1vw 0px",
+                  margin: "1rem 0px",
                   height: "80px",
                 }}
               >
@@ -436,22 +434,30 @@ function Main({
           <div className="popup__inner">
             <div className="dialog-1">
               <div className="main-display">
-                <Grid container spacing={2}>
+                <Grid className="content-container" container spacing={2}>
                   <Grid
                     item
                     xs={4}
                     style={{
                       justifyContent: "center",
                       alignItems: "center",
-                      marginTop: "100px",
                     }}
                   >
-                    <div className="winner__title">Winner</div>
-                    <div
-                      id="winner"
-                      className="winnername__title"
-                      style={{ marginTop: "30px" }}
-                    >
+                    <div id="winner" className="winnername__title">
+                      <div className="prize-title">
+                        <p className={counter == 1 ? "show" : "hidden"}>
+                          Consolation Prize
+                        </p>
+                        <p className={counter == 2 ? "show" : "hidden"}>
+                          3rd Prize
+                        </p>
+                        <p className={counter == 3 ? "show" : "hidden"}>
+                          2nd Prize
+                        </p>
+                        <p className={counter == 4 ? "show" : "hidden"}>
+                          1st Prize
+                        </p>
+                      </div>
                       <Button
                         className="img-wrapper"
                         disabled={isExploding}
@@ -469,44 +475,31 @@ function Main({
                               ? prize4
                               : null
                           }
+                          width="400px"
+                          height="400px"
+                          alt=""
                         />
                       </Button>
-                      <div>
-                        <p className={counter == 1 ? "show" : "hidden"}>
-                          Consolation Prize
-                        </p>
-                        <p className={counter == 2 ? "show" : "hidden"}>
-                          Prize 3
-                        </p>
-                        <p className={counter == 3 ? "show" : "hidden"}>
-                          Prize 2
-                        </p>
-                        <p className={counter == 4 ? "show" : "hidden"}>
-                          Prize 1
-                        </p>
-                      </div>
-                      <div className="winnername__title"></div>
-                      <p>{Winner}</p>
+
+                      {/* <div className="winnername__title"></div> */}
+                      {/* <p>{Winner}</p> */}
                     </div>
                   </Grid>
 
-                  <Grid item xs={4} style={{ marginTop: "30px" }}>
+                  <Grid item xs={4}>
+                    <div className="title-header">
+                      <h1>Lucky Draw</h1>
+                    </div>
                     <div>{rendertemplate(winnerList)}</div>
-                    {/* {arrayOfNames && arrayOfNames.map((item) => <li>{item}</li>)} */}
                     <Button
-                      className="blue-button"
+                      className="blue-button startBtn"
                       disabled={isExploding}
                       onClick={(e) => start(e.target)}
                     >
                       {buttontext}
                     </Button>
                   </Grid>
-                  <Grid
-                    item
-                    xs={4}
-                    style={{ marginTop: "30px" }}
-                    className={isHidden ? "hidden" : "show"}
-                  >
+                  <Grid item xs={4} className={isHidden ? "hidden" : "show edit-column" }>
                     {/* <TextField
                       required
                       id="standard-required"
@@ -526,6 +519,17 @@ function Main({
                         label="Remove winner from list if picked"
                       />
                     </FormGroup>
+                    {/* <FormGroup>
+                      <FormControlLabel
+                        control={
+                          <Checkbox
+                            onChange={(e) => setConfettiFlag(!confettiFlag)}
+                            inputProps={{ "aria-label": "controlled" }}
+                          />
+                        }
+                        label="Confetti On/Off"
+                      />
+                    </FormGroup> */}
                     <TextField
                       id="filled-multiline-flexible"
                       label="Entered names"
@@ -534,7 +538,6 @@ function Main({
                       value={activeNote.body}
                       onChange={(e) => onEditField("body", e.target.value)}
                       variant="filled"
-                      style={{ width: "80%", marginTop: "20px" }}
                     />
                     {/* <div
                       className="blue-button"
@@ -545,12 +548,7 @@ function Main({
                     </div> */}
                   </Grid>
                 </Grid>
-                <div
-                  className="confetti"
-                  style={{
-                    marginTop: "-50px",
-                  }}
-                >
+                <div className="confetti">
                   {isExploding && (
                     <ConfettiExplosion
                       duration={3000}

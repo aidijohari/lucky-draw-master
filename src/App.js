@@ -8,7 +8,8 @@ import SettingsIcon from "@mui/icons-material/Settings";
 import "./App.css";
 import Main from "./Main";
 import Sidebar from "./Sidebar";
-import Modal from "./BasicModal";
+
+import logo from "./assets/logo.jpg";
 
 function App() {
   const defaultName = {
@@ -28,7 +29,6 @@ function App() {
   const [buttontext, setbuttontext] = useState("Start");
   const [isHidden, setIsHidden] = useState(true);
   const [isExploding, setIsExploding] = useState(false);
-
 
   const onAddNames = () => {
     const newName = {
@@ -66,30 +66,12 @@ function App() {
     if (!combinedBodyArray) return;
     else {
       const seperatedBodyArray = combinedBodyArray.body.split("\n");
-      // console.log("splitName():", seperatedBodyArray);
       setArrayOfNames(seperatedBodyArray);
       setWinnerList(seperatedBodyArray);
-      // return seperatedBodyArray;
     }
   };
 
   const shuffleArray = (array) => {
-    // let i = array.length - 1;
-    // for (; i > 0; i--) {
-    //   const j = Math.floor(Math.random() * (i + 1));
-    //   const temp = array[i];
-    //   array[i] = array[j];
-    //   array[j] = temp;
-    // }
-    // console.log("shuffle", array);
-    // setArrayOfNames([...array]);
-    // setWinnerList([...array]);
-    // console.log("shuffleArray() [winnerList]", winnerList);
-    // console.log("shuffleArray() [arrayOfNames]", arrayOfNames);
-
-    // removeWinner(arrayOfNames);
-
-    // appendDisplay();
     if (Winner === null) {
     } else {
       let re_winner = [];
@@ -103,19 +85,10 @@ function App() {
       setArrayOfNames(re_winner);
       setWinner("No select");
     }
-    // AddSuspenseComponent(winnerList[0], true)
-    // return arrayOfNames;
   };
 
   const removeWinner = (winnerName) => {
     setWinnerList(winnerList.filter((winnerList) => winnerList !== winnerName));
-
-
-    // console.log("removeWinner() [arrayOfNames]", array[index]);
-    // // var index = array;
-    // array.splice(array, index);
-    // setArrayOfNames(array);
-    // return array
   };
 
   const appendDisplay = () => {
@@ -125,35 +98,10 @@ function App() {
     let p = document.createElement("p");
 
     if (winnerList !== undefined) {
-      console.log("appendDisplay:", winnerList[0]);
+      // console.log("appendDisplay:", winnerList[0]);
       container.append(winnerList[0]);
-      // let winner = AddSuspenseComponent(winnerList, true);
-      // container.append(winner);
     }
   };
-
-  // const AddSuspenseComponent = (x, bool) => {
-  //   // let winnerName = x[0].split("");
-  //   // let candidates = x.map((item) => {
-  //   //   return item.split(" ");
-  //   // });
-  //   // console.log("candidates", candidates);
-
-  //   const characters = useRandomReveal({
-  //     isPlaying: true,
-  //     duration: 3.2,
-  //     revealDuration: 0,
-  //     speed: 6,
-  //     characters: [x[0]],
-  //     characterSet: x,
-  //     // characters: x[0],
-  //     // characterSet: " "+candidates,
-  //     // revealEasing: "random",
-  //     onComplete: () => [true, 3000],
-  //   });
-
-  //   return characters;
-  // };
 
   const toggleEdit = () => {
     setIsHidden(!isHidden);
@@ -163,8 +111,15 @@ function App() {
     splitName();
   }, []);
 
+  useEffect(() => {
+    if ([Winner] != null && [Winner] != "") console.log("Winner:" + [Winner]);
+  }, [Winner]);
+
   return (
     <div className="App" style={{ height: "100vh", overflow: "hidden" }}>
+      <div className="logo-wrapper">
+        <img className="logo" src={logo}></img>
+      </div>
       <Sidebar
         names={names}
         onAddNames={onAddNames}
@@ -179,14 +134,12 @@ function App() {
       >
         <SettingsIcon />
       </Button>
-      {/* <Modal/> */}
       <Main
         arrayOfNames={arrayOfNames}
         winnerList={winnerList}
         activeNote={getActiveNote()}
         onUpdateNote={onUpdateNote}
         shuffleArray={shuffleArray}
-        // AddSuspenseComponent={AddSuspenseComponent}
         appendDisplay={appendDisplay}
         buttontext={buttontext}
         setbuttontext={setbuttontext}
