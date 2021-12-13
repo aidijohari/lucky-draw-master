@@ -1,9 +1,3 @@
-@font-face {
-  font-family: "GothamMedium";
-  src: local("GothamMedium"),
-    url("./assets/Font/GothamMedium.ttf") format("truetype");
-}
-
 .active {
   background: rgb(160, 233, 255);
 }
@@ -25,6 +19,7 @@ body {
 body * {
   color: #333;
   font-family: "Source Sans Pro", sans-serif;
+  font-family: 'Roboto', sans-serif;
   font-weight: 500;
 }
 
