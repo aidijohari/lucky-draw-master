@@ -17,6 +17,9 @@ body {
     #abd4d7,
     #a0cbd1
   );
+  background: url("./assets/bg.jpg") no-repeat center center;
+  background-size: cover;
+  background-position: bottom;
 }
 
 body * {
