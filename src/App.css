@@ -83,13 +83,13 @@ body * {
 .winner__title {
   overflow: hidden;
   height: 40px;
-  text-transform: uppercase;
+  /* text-transform: uppercase; */
 }
 
 .winner {
   overflow: hidden;
   text-overflow: ellipsis;
-  text-transform: uppercase;
+  /* text-transform: uppercase; */
 }
 
 * {
