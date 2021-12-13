@@ -23,11 +23,6 @@ body * {
   font-weight: 500;
 }
 
-.startBtn.css-1e6y48t-MuiButtonBase-root-MuiButton-root.Mui-disabled{
-  color: #eee;
-  opacity: 0.4
-}
-
 .logo-wrapper {
   position: absolute;
   width: 105px;
@@ -167,11 +162,18 @@ body {
   margin-bottom: 1.4rem;
 }
 
+.prize-desc p{
+  font-size:1.3rem;
+  font-weight:500;
+  margin-top: 1.4rem;
+}
+
 .title-header h1 {
   font-size: 1rem;
   font-weight: 400;
   margin-bottom: 1.4rem;
   opacity: 0.8;
+  visibility: hidden;
 }
 
 .startBtn {
@@ -184,6 +186,12 @@ body {
   z-index: 0;
   border-radius: 10px !important;
   color: #fff !important;
+  margin-top: 1.4rem !important;
+}
+
+.startBtn.css-1e6y48t-MuiButtonBase-root-MuiButton-root.Mui-disabled{
+  color: #eee;
+  opacity: 0.4;
 }
 
 .startBtn::before {
@@ -229,6 +237,7 @@ body {
   top: 0;
   border-radius: 10px;
 }
+
 
 @keyframes move {
   0% {

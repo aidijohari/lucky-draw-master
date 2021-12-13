@@ -480,6 +480,20 @@ function Main({
                           alt=""
                         />
                       </Button>
+                      <div className="prize-desc">
+                        <p className={counter == 1 ? "show" : "hidden"}>
+                          Logitech Webcam
+                        </p>
+                        <p className={counter == 2 ? "show" : "hidden"}>
+                          Philips Air Fryer
+                        </p>
+                        <p className={counter == 3 ? "show" : "hidden"}>
+                          Xiaomi Mi Robot
+                        </p>
+                        <p className={counter == 4 ? "show" : "hidden"}>
+                          Dyson Supersonic
+                        </p>
+                      </div>
 
                       {/* <div className="winnername__title"></div> */}
                       {/* <p>{Winner}</p> */}
@@ -499,7 +513,11 @@ function Main({
                       {buttontext}
                     </Button>
                   </Grid>
-                  <Grid item xs={4} className={isHidden ? "hidden" : "show edit-column" }>
+                  <Grid
+                    item
+                    xs={4}
+                    className={isHidden ? "hidden" : "show edit-column"}
+                  >
                     {/* <TextField
                       required
                       id="standard-required"
