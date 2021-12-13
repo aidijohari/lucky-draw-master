@@ -444,20 +444,6 @@ function Main({
                     }}
                   >
                     <div id="winner" className="winnername__title">
-                      <div className="prize-title">
-                        <p className={counter == 1 ? "show" : "hidden"}>
-                          Consolation Prize
-                        </p>
-                        <p className={counter == 2 ? "show" : "hidden"}>
-                          3rd Prize
-                        </p>
-                        <p className={counter == 3 ? "show" : "hidden"}>
-                          2nd Prize
-                        </p>
-                        <p className={counter == 4 ? "show" : "hidden"}>
-                          1st Prize
-                        </p>
-                      </div>
                       <Button
                         className="img-wrapper"
                         disabled={isExploding}
@@ -480,6 +466,20 @@ function Main({
                           alt=""
                         />
                       </Button>
+                      <div className="prize-title">
+                        <p className={counter == 1 ? "show" : "hidden"}>
+                          Consolation
+                        </p>
+                        <p className={counter == 2 ? "show" : "hidden"}>
+                          3rd Prize
+                        </p>
+                        <p className={counter == 3 ? "show" : "hidden"}>
+                          2nd Prize
+                        </p>
+                        <p className={counter == 4 ? "show" : "hidden"}>
+                          1st Prize
+                        </p>
+                      </div>
                       <div className="prize-desc">
                         <p className={counter == 1 ? "show" : "hidden"}>
                           Logitech Webcam
