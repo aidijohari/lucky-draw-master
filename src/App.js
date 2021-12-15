@@ -70,6 +70,7 @@ function App() {
       setWinnerList(seperatedBodyArray);
     }
   };
+  
 
   const shuffleArray = (array) => {
     if (Winner === null) {

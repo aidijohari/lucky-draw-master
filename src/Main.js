@@ -7,7 +7,7 @@ import song from "./assets/scroll3.mpeg";
 import winnersound from "./assets/Lucky draw mix 2.mp3";
 import ConfettiExplosion from "@reonomy/react-confetti-explosion";
 import { FormGroup, FormControlLabel } from "@mui/material";
-import useKeypress from 'react-use-keypress';
+import useKeypress from "react-use-keypress";
 import prize1 from "./assets/prize4.png";
 import prize2 from "./assets/prize3.png";
 import prize3 from "./assets/prize2.png";
@@ -51,12 +51,16 @@ function Main({
 
   const [counter, setCounter] = React.useState(1);
 
-  useKeypress('Enter', () => {
-    start();
+  useKeypress("Enter", () => {
+    if (isExploding == false && isHidden == true) {
+      start();
+    }
   });
 
-  useKeypress('ArrowRight', () => {
-    imageCounter();
+  useKeypress("ArrowRight", () => {
+    if (isExploding == false) {
+      imageCounter();
+    }
   });
 
   const start = () => {
