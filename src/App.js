@@ -1,8 +1,6 @@
 import React, { useState, useEffect } from "react";
 import uuid from "react-uuid";
 import { Button } from "@mui/material";
-import { useRandomReveal } from "react-random-reveal";
-import { RandomReveal } from "react-random-reveal";
 import SettingsIcon from "@mui/icons-material/Settings";
 
 import "./App.css";
@@ -70,7 +68,7 @@ function App() {
       setWinnerList(seperatedBodyArray);
     }
   };
-  
+
 
   const shuffleArray = (array) => {
     if (Winner === null) {
@@ -90,7 +88,7 @@ function App() {
 
   const removeWinner = (winnerName) => {
     setWinnerList(winnerList.filter((winnerList) => winnerList !== winnerName));
-  };
+  };  
 
   const appendDisplay = () => {
     const container = document.querySelector("#winner");

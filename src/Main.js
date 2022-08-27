@@ -181,7 +181,9 @@ function Main({
                 style={{
                   width: "100%",
                   padding: "0.15vw",
-                  margin: "1rem 0px",
+                  display: "flex",
+                  justifyContent: "center",
+                  alignItems: "center", 
                   height: "80px",
                 }}
               >
